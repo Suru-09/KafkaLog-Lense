@@ -21,9 +21,9 @@ public class JavaProducer {
         boolean b = true;
         while (b) {
             LogSender();
+            Thread.sleep(1000);
             k++;
             b = k < Integer.MAX_VALUE;
-            Thread.sleep(1000);
         }
     }
 
