@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package com.example.mylog;
+package protobuf;
 import "google/protobuf/timestamp.proto";
 
 enum LogLevel {

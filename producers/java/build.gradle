@@ -25,6 +25,15 @@ dependencies {
     implementation 'org.apache.logging.log4j:log4j-api:2.21.0'
     implementation 'org.apache.logging.log4j:log4j-core:2.21.0'
     implementation group: 'org.apache.kafka', name: 'kafka-log4j-appender', version: '3.6.0'
+    implementation 'com.google.protobuf:protobuf-java:3.18.1'
+}
+
+task javaProtobufScript(type: Exec) {
+    commandLine 'bash', '../../scripts/java_protoc.sh'
+
+    // Optionally set the working directory (where the script will be run)
+    workingDir project.projectDir
+
 }
 
 test {
