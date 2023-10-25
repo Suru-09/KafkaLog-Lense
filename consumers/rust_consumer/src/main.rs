@@ -1,4 +1,5 @@
 mod consumer;
+mod LogMessage;
 
 use crate::consumer::consumer::consume_messages;
 

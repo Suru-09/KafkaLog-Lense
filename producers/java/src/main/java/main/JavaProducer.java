@@ -11,6 +11,7 @@ import serializer.ProtobufSerializer;
 
 import java.util.Date;
 import java.util.Properties;
+import java.util.Random;
 
 public class JavaProducer {
 
@@ -22,21 +23,16 @@ public class JavaProducer {
 
         Producer<String, LogMessageOuterClass.LogMessage> producer = new KafkaProducer<>(props);
 
-        Timestamp timestamp;
-        Date date;
 
-        date = new Date();
-        timestamp = Timestamp.newBuilder()
-                .setSeconds(date.getTime() / 1000)
-                .setNanos((int) ((date.getTime() % 1000) * 1000000))
-                .build();
         int logCount = 0;
         boolean stopCondition = true;
 
         while(stopCondition) {
+            var random = new Random();
+
             LogMessageOuterClass.LogMessage logMessage = LogMessageOuterClass.LogMessage.newBuilder()
-                    .setTimestamp(timestamp)
-                    .setLogLevelValue(1)
+                    .setTimestamp(getTimestamp())
+                    .setLogLevelValue(random.nextInt(4))
                     .setMessage("Java Producer")
                     .build();
 
@@ -48,6 +44,18 @@ public class JavaProducer {
         }
 
         producer.close();
+    }
+
+    private static Timestamp getTimestamp() {
+        Timestamp timestamp;
+        Date date;
+
+        date = new Date();
+        timestamp = Timestamp.newBuilder()
+                .setSeconds(date.getTime() / 1000)
+                .setNanos((int) ((date.getTime() % 1000) * 1000000))
+                .build();
+        return timestamp;
     }
 
 }

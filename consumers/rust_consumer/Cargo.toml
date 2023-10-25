@@ -9,4 +9,8 @@ edition = "2021"
 rdkafka = { version = "0.25", default-features = false }
 futures = "0.3.28"
 tokio = { version = "1.33.0", features = ["full"] }
+prost = "0.12.1"
+prost-types = "0.12.1"
+protobuf = "2.27.1"
+chrono = "0.4.31"
 
