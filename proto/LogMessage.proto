@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package com.example.mylog;
+import "google/protobuf/timestamp.proto";
+
+enum LogLevel {
+  DEBUG = 0;
+  INFO = 1;
+  WARNING = 2;
+  ERROR = 3;
+  FATAL = 4;
+}
+
+message LogMessage {
+  google.protobuf.Timestamp timestamp = 1;
+  LogLevel log_level = 2;
+  string message = 3;
+}
