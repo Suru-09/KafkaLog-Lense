@@ -31,7 +31,7 @@ pub mod consumer {
 
     pub async fn consume_messages() {
         let consumer: StreamConsumer = ClientConfig::new()
-            .set("bootstrap.servers", ":9092")
+            .set("bootstrap.servers", "192.168.1.186:9094")
             .set("group.id", "my_consumer_group")
             .create()
             .expect("Consumer creation failed");

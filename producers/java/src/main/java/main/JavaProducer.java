@@ -6,7 +6,9 @@ import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
-import protobuf.LogMessageOuterClass;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import protobuf.LogMessageOuterClass.LogMessage;
 import serializer.ProtobufSerializer;
 
 import java.util.Date;
@@ -15,13 +17,15 @@ import java.util.Random;
 
 public class JavaProducer {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(JavaProducer.class);
+
     public static void main(String[] args) throws InterruptedException {
         Properties props = new Properties();
-        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, ":9092");
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.1.186:9094");
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, ProtobufSerializer.class.getName());
 
-        Producer<String, LogMessageOuterClass.LogMessage> producer = new KafkaProducer<>(props);
+        Producer<String, LogMessage> producer = new KafkaProducer<>(props);
 
 
         int logCount = 0;
@@ -30,14 +34,15 @@ public class JavaProducer {
         while(stopCondition) {
             var random = new Random();
 
-            LogMessageOuterClass.LogMessage logMessage = LogMessageOuterClass.LogMessage.newBuilder()
+            LogMessage logMessage = LogMessage.newBuilder()
                     .setTimestamp(getTimestamp())
                     .setLogLevelValue(random.nextInt(4))
                     .setMessage("Java Producer")
                     .build();
 
-            ProducerRecord<String, LogMessageOuterClass.LogMessage> record = new ProducerRecord<>("event", logMessage);
+            ProducerRecord<String, LogMessage> record = new ProducerRecord<>("event", logMessage);
             producer.send(record);
+            LOGGER.info("Sent message: " + logMessage.toString());
             logCount++;
             stopCondition = logCount < Integer.MAX_VALUE;
             Thread.sleep(3000);
