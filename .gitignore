@@ -47,3 +47,11 @@ consumers/rust_consumer/target/*
 *.dll.a
 *.dll.lib
 
+# Ignore UIDS
+**/uid.json
+uid.json
+
+# Ignore .DS_Store
+**/.DS_Store
+.DS_Store
+
