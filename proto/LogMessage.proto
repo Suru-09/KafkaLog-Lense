@@ -23,4 +23,5 @@ message LogMessage {
   LogLevel log_level = 2;
   string message = 3;
   ApplicationLanguage app_lang = 4;
+  string uid = 5;
 }
