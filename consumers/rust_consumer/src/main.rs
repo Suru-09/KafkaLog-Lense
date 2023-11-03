@@ -1,6 +1,6 @@
 mod consumer;
-mod LogMessage;
 mod uid_generator;
+mod LogMessage;
 
 use crate::consumer::consumer::consume_messages;
 use crate::uid_generator::init_uid;

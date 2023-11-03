@@ -55,3 +55,8 @@ uid.json
 **/.DS_Store
 .DS_Store
 
+# Ignore Rust stuff
+**/target/**
+Cargo.lock
+consumers/rust_consumer/src/protos/*
+
