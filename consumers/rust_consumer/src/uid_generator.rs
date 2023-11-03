@@ -24,7 +24,7 @@ fn generate_uid() -> String {
 }
 
 fn write_uid_to_file(uid: &str) -> Result<(), Error> {
-    let mut file = std::fs::File::create("uid.json");
+    let file = std::fs::File::create("uid.json");
     match file {
         Ok(mut f) => {
             let json = json!({ "uid": uid });
