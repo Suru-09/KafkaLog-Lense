@@ -11,8 +11,16 @@ enum LogLevel {
   FATAL = 4;
 }
 
+enum ApplicationLanguage {
+  RUST = 0;
+  JAVA = 1;
+  CPP = 2;
+  GO = 3;
+}
+
 message LogMessage {
   google.protobuf.Timestamp timestamp = 1;
   LogLevel log_level = 2;
   string message = 3;
+  ApplicationLanguage app_lang = 4;
 }
