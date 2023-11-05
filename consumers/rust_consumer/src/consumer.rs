@@ -10,6 +10,7 @@ pub mod consumer {
     use rdkafka::Message;
     use crate::LogMessage::LogMessage;
     use chrono::LocalResult;
+    use crate::es_wrapper::es_wrapper::ESWrapper;
 
     fn unix_timestamp_to_datetime(unix_timestamp: i64) -> String {
         let duration = Duration::from_secs(unix_timestamp as u64);
@@ -61,6 +62,11 @@ pub mod consumer {
 
                     let timestamp = unix_timestamp_to_datetime(log_message.get_timestamp().get_seconds());
                     println!("Received message: {:?}, {:?}, {:?}", timestamp, log_message.get_log_level(), log_message.get_message());
+                    let es_wrapper = ESWrapper::new();
+                    match es_wrapper.index_log_message(log_message).await {
+                        Ok(_) => println!("Indexed log message"),
+                        Err(e) => println!("Error indexing log message: {}", e)
+                    }
                 }
                 Err(e) => {
                     println!("Error: {:?}", e);
