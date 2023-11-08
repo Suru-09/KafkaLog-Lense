@@ -1,13 +1,15 @@
 #include <iostream>
-#include <fstream>
 
-#include <nlohmann/json.hpp>
-#include <openssl/sha.h>
-#include <librdkafka/rdkafkacpp.h>
+#include "uid.h"
 
-using json = nlohmann::json;
 
 int main(int argc, char *argv[]) {
-    std::cout << "Hello World!" << std::endl;
+    uid::UID uid;
+    uid.initUID();
+    auto uidStr = uid.getUID();
+    for(const auto&  c: uidStr) {
+        std::cout << std::hex << static_cast<int>(c);
+    }
+    std::cout << std::endl;
     return 0;
 }

@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 3.22)
 
 
-add_executable(${PROJECT_NAME} 
+add_executable(${PROJECT_NAME}
+    utils.cpp
+    uid.cpp
     main.cpp
 )
 
