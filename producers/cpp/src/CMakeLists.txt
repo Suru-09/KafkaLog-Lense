@@ -5,6 +5,7 @@ add_executable(${PROJECT_NAME}
     utils.cpp
     uid.cpp
     kafka_producer.cpp
+    normal_distribution.cpp
     main.cpp
 )
 
