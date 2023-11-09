@@ -39,7 +39,7 @@ public class JavaProducer {
 
             LogMessage logMessage = LogMessage.newBuilder()
                     .setTimestamp(getTimestamp())
-                    .setLogLevelValue(random.nextInt(4))
+                    .setLogLevelValue(random.nextInt(5))
                     .setMessage("...")
                     .setAppLang(APPLICATION_LANGUAGE)
                     .setUid(Utils.readOrCreateUid(FILE))
