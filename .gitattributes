@@ -1,0 +1,4 @@
+producers/cpp/libs/** linguist-vendored
+producers/java/src/main/java/protobuf/** linguist-vendored
+
+consumers/rust_consumer/src/LogMessage.rs linguist-vendored

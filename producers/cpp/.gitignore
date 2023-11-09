@@ -1,0 +1,20 @@
+# ignore build
+build/
+cmake-build-debug/
+cmake-build-release/
+cmake-build-relwithdebinfo/
+
+# ignore IDE files
+.vscode/
+.idea/
+.DS_Store
+
+# ignore executables
+*.exe
+*.out
+*.so
+*.dll
+*.dylib
+
+
+
