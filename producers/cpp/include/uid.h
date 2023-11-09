@@ -29,7 +29,7 @@ public:
 private:
     std::string m_uid;
 
-    std::string generateRandomStirng(uint32_t strLength) const;
+    std::string generateRandomString(uint32_t strLength) const;
 };
 
 }   // namespace uid
