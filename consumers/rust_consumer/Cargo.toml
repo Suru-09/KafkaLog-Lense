@@ -19,5 +19,6 @@ protobuf = "2.27.1"
 protobuf-codegen = "2.27.1"
 protoc-rust = "2.28.0"
 elasticsearch = "8.5.0-alpha.1"
+opentelemetry = "0.23.0"
 
 
